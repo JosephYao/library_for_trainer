@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Library {
@@ -13,12 +12,10 @@ public class Library {
 	}
 
 	public void checkoutBook(String isbn) {
-		List<Book> book = warehouse.bookForIsbn(isbn);
+		Book book = warehouse.bookForIsbn(isbn);
 
-        for (Book onlyOne : book) {
-            books.add(onlyOne);
-            listener.bookAdded(onlyOne);
-        }
+        books.add(book);
+        listener.bookAdded(book);
 
 	}
 

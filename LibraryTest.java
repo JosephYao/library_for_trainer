@@ -44,29 +44,29 @@ public class LibraryTest {
 	public void canAddTestDrivenDevelopmentByExample() {
 		FakeListener listener = new FakeListener();
 		library = new Library(listener);
-		library.checkoutBook("1");
-		assertEquals(150000, listener.lastBook.getPrice().getCents());
+		library.checkoutBook("0321146530");
+		assertEquals(3835, listener.lastBook.getPrice().getCents());
 		assertEquals("Test Driven Development By Example", listener.lastBook.getName());
 	}
 	
 	@Test
 	public void canAddRefactoring() {
-		library.checkoutBook("3");
-		assertEquals("Refactoring $70.00", display.lastShownLine);
+		library.checkoutBook("0201485672");
+		assertEquals("Refactoring $47.84", display.lastShownLine);
 	}
 	
 	@Test
 	public void canAddGoosBook() {
-		library.checkoutBook("4");
-		assertEquals("Growing the Object Oriented Design, Guided by Test $1,000.00", display.lastShownLine);
+		library.checkoutBook("0321503627");
+		assertEquals("Growing the Object Oriented Design, Guided by Test $47.98", display.lastShownLine);
 	}
 	
 	@Test
 	public void canSubtotalACheckout() {
-		library.checkoutBook("1");
-		library.checkoutBook("3");
+		library.checkoutBook("0321146530");
+		library.checkoutBook("0201485672");
 		library.totalPrice();
-		assertEquals("Subtotal $1,570.00", display.lastShownLine);	
+		assertEquals("Subtotal $86.19", display.lastShownLine);
 	}
 	
 }

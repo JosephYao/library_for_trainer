@@ -14,8 +14,4 @@ class Monitor implements LibraryEventListener
 		display.showLine("Subtotal " + total.asText());
 	}
 	
-	public void totalled(Money total) {		
-		display.showLine("Total " + total.asText());
-
-	}
 }

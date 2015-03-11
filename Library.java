@@ -12,11 +12,10 @@ public class Library {
 	}
 
 	public void checkoutBook(String isbn) {
-		Book book = warehouse.bookForIsbn(isbn);
-
-        books.add(book);
-        listener.bookAdded(book);
-
+		warehouse.bookForIsbn(isbn, book -> {
+            books.add(book);
+            listener.bookAdded(book);
+        });
 	}
 
 	public void totalPrice() {
@@ -28,7 +27,7 @@ public class Library {
 	}
 
     public int totalCount() {
-        return -1;
+        return books.size();
     }
 }
 

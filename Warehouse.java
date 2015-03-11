@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.function.Consumer;
 
 
 public class Warehouse {
@@ -10,11 +11,11 @@ public class Warehouse {
 		items.put("0321503627", new Book("Growing the Object Oriented Design, Guided by Test", new Money(4798)));
 	}
 
-	public Book bookForIsbn(String isbn) {
-        if (!items.containsKey(isbn))
-            return new NotExistingBook();
+	public void bookForIsbn(String isbn, Consumer<Book> action) {
+        Book book = items.get(isbn);
 
-		return items.get(isbn);
+        if (book != null)
+            action.accept(book);
 	}
 
 }

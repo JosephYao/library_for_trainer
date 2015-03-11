@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class Warehouse {
@@ -10,11 +13,11 @@ public class Warehouse {
 		items.put("0321503627", new Book("Growing the Object Oriented Design, Guided by Test", new Money(4798)));
 	}
 
-	public Book bookForIsbn(String isbn) {
+	public List<Book> bookForIsbn(String isbn) {
         if (!items.containsKey(isbn))
-            return new NotExistingBook();
+            return new ArrayList<Book>();
 
-		return items.get(isbn);
+		return Arrays.asList(items.get(isbn));
 	}
 
 }

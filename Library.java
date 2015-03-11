@@ -26,7 +26,10 @@ public class Library {
 		}
 		listener.totaled(sum);
 	}
-	
+
+    public int totalCount() {
+        return -1;
+    }
 }
 
 

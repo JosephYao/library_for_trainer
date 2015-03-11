@@ -83,5 +83,11 @@ public class LibraryTest {
         library.totalPrice();
         assertEquals("Subtotal $0.00", display.lastShownLine);
     }
+
+    @Test
+    public void total_count_on_not_existing_isbn() {
+        library.checkoutBook("notExistingIsbn");
+        assertEquals(0, library.totalCount());
+    }
 	
 }

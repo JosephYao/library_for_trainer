@@ -60,10 +60,9 @@ public class LibraryTest {
 	}
 	
 	@Test
-	public void canSellMilkWithCoupon() {
-		library.addBook("3");
-		library.addBook("4");   // Coupon for Milk
-		assertEquals("Coupon for Milk ($0.10)", display.lastShownLine);	
+	public void canAddGoosBook() {
+		library.addBook("4");
+		assertEquals("Growing the Object Oriented Design, Guided by Test $1,000.00", display.lastShownLine);
 	}
 	
 	@Test

@@ -17,19 +17,15 @@ class FakeListener implements LibraryEventListener
 {
 	Book lastBook;
 	Money lastSubtotal;
-	Money lastTotal;
-	
+
 	public void bookAdded(Book book) {
 		lastBook = book;
 	}
 
-	public void subtotaled(Money subtotal) {	
-		lastSubtotal = subtotal;
+	public void totaled(Money total) {
+		lastSubtotal = total;
 	}
 
-	public void totalled(Money total) {		
-		lastTotal = total;
-	}
 }
 
 public class LibraryTest {
@@ -48,36 +44,29 @@ public class LibraryTest {
 	public void canAddTestDrivenDevelopmentByExample() {
 		FakeListener listener = new FakeListener();
 		library = new Library(listener);
-		library.addBook("1");
+		library.checkoutBook("1");
 		assertEquals(150000, listener.lastBook.getPrice().getCents());
 		assertEquals("Test Driven Development By Example", listener.lastBook.getName());
 	}
 	
 	@Test
 	public void canAddRefactoring() {
-		library.addBook("3");
+		library.checkoutBook("3");
 		assertEquals("Refactoring $70.00", display.lastShownLine);
 	}
 	
 	@Test
 	public void canAddGoosBook() {
-		library.addBook("4");
+		library.checkoutBook("4");
 		assertEquals("Growing the Object Oriented Design, Guided by Test $1,000.00", display.lastShownLine);
 	}
 	
 	@Test
-	public void canSubtotalASale() {
-		library.addBook("1");
-		library.addBook("3");
-		library.subtotal();
+	public void canSubtotalACheckout() {
+		library.checkoutBook("1");
+		library.checkoutBook("3");
+		library.totalPrice();
 		assertEquals("Subtotal $1,570.00", display.lastShownLine);	
 	}
 	
-	@Test
-	public void canTotalASale() {
-		library.addBook("3");
-		library.total();
-		assertEquals("Total $70.00", display.lastShownLine);	
-	}
-
 }

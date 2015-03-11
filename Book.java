@@ -1,8 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
-
-
 public class Book {
 	private String name;
 	private Money price;
@@ -12,30 +7,13 @@ public class Book {
 		this.price = price;
 	}
 
-	public Money getValue() {
+	public Money getPrice() {
 		return price;
 	}
 	
 	public String getDisplayLine() {
 		return name + " " + price.asText();
 	}
-
-	public Money getPrice(List<Book> books) {
-		return price;
-	}
-
-	public Money getPrice() {
-		return getPrice(new ArrayList<Book>());
-	}
-	
-	public Money getTaxedPrice(List<Book> books) {
-		return getPrice(books);
-	}
-
-	public Money getTaxedPrice() {
-		return getTaxedPrice(new ArrayList<Book>());
-	}
-	
 
 	public String getName() {
 		return name;

@@ -11,28 +11,21 @@ public class Library {
 		this.listener = listener;
 	}
 
-	public void addBook(String isbn) {
+	public void checkoutBook(String isbn) {
 		Book book = warehouse.bookForIsbn(isbn);
 		books.add(book);
 		
 		listener.bookAdded(book);
 	}
 
-	public void subtotal() {
+	public void totalPrice() {
 		Money sum = new Money();
 		for(Book book : books) {
-			sum = sum.add(book.getPrice(books));
+			sum = sum.add(book.getPrice());
 		}
-		listener.subtotaled(sum);
+		listener.totaled(sum);
 	}
 	
-	public void total() {
-		Money sum = new Money();
-		for(Book book : books) {
-			sum = sum.add(book.getTaxedPrice(books));
-		}
-		listener.totalled(sum);	
-	}
 }
 
 

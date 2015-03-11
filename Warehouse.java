@@ -11,6 +11,9 @@ public class Warehouse {
 	}
 
 	public Book bookForIsbn(String isbn) {
+        if (!items.containsKey(isbn))
+            return new NotExistingBook();
+
 		return items.get(isbn);
 	}
 

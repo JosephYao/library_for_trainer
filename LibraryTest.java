@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -70,10 +71,17 @@ public class LibraryTest {
 		assertEquals("Subtotal $86.19", display.lastShownLine);
 	}
     
-    @Test(expected = NotExistingIsbnException.class)
+    @Ignore @Test(expected = NotExistingIsbnException.class)
     public void not_existing_isbn() {
         library.checkoutBook("notExistingIsbn");
         fail();
+    }
+
+    @Test
+    public void total_on_not_existing_isbn() {
+        library.checkoutBook("notExistingIsbn");
+        library.totalPrice();
+        assertEquals("Subtotal $0.00", display.lastShownLine);
     }
 	
 }

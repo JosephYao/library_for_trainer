@@ -13,9 +13,12 @@ public class Library {
 
 	public void checkoutBook(String isbn) {
 		Book book = warehouse.bookForIsbn(isbn);
-		books.add(book);
-		
-		listener.bookAdded(book);
+
+        if (book != null) {
+            books.add(book);
+            listener.bookAdded(book);
+        }
+
 	}
 
 	public void totalPrice() {

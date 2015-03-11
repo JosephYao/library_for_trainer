@@ -50,13 +50,13 @@ public class LibraryTest {
 		library = new Library(listener);
 		library.addBook("1");
 		assertEquals(150000, listener.lastBook.getPrice().getCents());
-		assertEquals("Preserved Duck Eggs", listener.lastBook.getName());
+		assertEquals("Test Driven Development By Example", listener.lastBook.getName());
 	}
 	
 	@Test
 	public void canAddRefactoring() {
 		library.addBook("3");
-		assertEquals("Milk $70.00", display.lastShownLine);	
+		assertEquals("Refactoring $70.00", display.lastShownLine);
 	}
 	
 	@Test

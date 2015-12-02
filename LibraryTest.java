@@ -1,9 +1,7 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 
 class FakeDisplay implements Display
@@ -71,12 +69,6 @@ public class LibraryTest {
 		assertEquals("Subtotal $86.19", display.lastShownLine);
 	}
     
-    @Ignore @Test(expected = NotExistingIsbnException.class)
-    public void not_existing_isbn() {
-        library.checkoutBook("notExistingIsbn");
-        fail();
-    }
-
     @Test
     public void total_on_not_existing_isbn() {
         library.checkoutBook("notExistingIsbn");

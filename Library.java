@@ -29,7 +29,10 @@ public class Library {
 		}
 		listener.totaled(sum);
 	}
-	
+
+    public int totalCount() {
+        return books.size();
+    }
 }
 
 

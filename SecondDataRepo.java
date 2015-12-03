@@ -1,5 +1,5 @@
 public class SecondDataRepo {
-    public void insert(SecondObject secondObject) {
+    public void insert(SecondObject secondObject, Runnable runWhenInsertFailed) {
 
     }
 }

@@ -2,15 +2,15 @@ public class BusinessLogic {
 
     public void someLogicWithTwoTableDataInsert() {
 
-        new Transaction().execute(() -> {
+        new Transaction().execute((Runnable runWhenInsertFailed) -> {
 
             FirstDataRepo firstRepo = new FirstDataRepo();
             FirstObject firstObject = new FirstObject();
-            firstRepo.insert(firstObject);
+            firstRepo.insert(firstObject, runWhenInsertFailed);
 
             SecondDataRepo secondRepo = new SecondDataRepo();
             SecondObject secondObject = new SecondObject();
-            secondRepo.insert(secondObject);
+            secondRepo.insert(secondObject, runWhenInsertFailed);
 
         });
 

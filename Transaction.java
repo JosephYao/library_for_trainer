@@ -1,3 +1,5 @@
+import java.util.function.Consumer;
+
 public class Transaction {
     private void begin() {
 
@@ -11,15 +13,13 @@ public class Transaction {
 
     }
 
-    public void execute(Runnable runnable) {
-        try {
-            begin();
+    public void execute(Consumer<Runnable> runnable) {
+        begin();
 
-            runnable.run();
-
-            commit();
-        } catch (Exception e) {
+        runnable.accept(() -> {
             rollback();
-        }
+        });
+
+        commit();
     }
 }

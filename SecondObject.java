@@ -1,0 +1,2 @@
+public class SecondObject {
+}

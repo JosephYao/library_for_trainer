@@ -2,11 +2,7 @@ public class BusinessLogic {
 
     public void someLogicWithTwoTableDataInsert() {
 
-        Transaction transaction = new Transaction();
-
-        transaction.begin();
-
-        try {
+        new Transaction().execute(() -> {
 
             FirstDataRepo firstRepo = new FirstDataRepo();
             FirstObject firstObject = new FirstObject();
@@ -16,11 +12,7 @@ public class BusinessLogic {
             SecondObject secondObject = new SecondObject();
             secondRepo.insert(secondObject);
 
-            transaction.commit();
-
-        } catch (Exception e) {
-            transaction.rollback();
-        }
+        });
 
     }
 

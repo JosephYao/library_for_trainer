@@ -1,13 +1,25 @@
 public class Transaction {
-    public void begin() {
+    private void begin() {
 
     }
 
-    public void commit() {
+    private void commit() {
 
     }
 
-    public void rollback() {
+    private void rollback() {
 
+    }
+
+    public void execute(Runnable runnable) {
+        try {
+            begin();
+
+            runnable.run();
+
+            commit();
+        } catch (Exception e) {
+            rollback();
+        }
     }
 }
